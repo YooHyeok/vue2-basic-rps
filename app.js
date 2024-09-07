@@ -1,1 +1,6 @@
-console.log("연결 확인")
+new Vue({
+  el: '#app',
+  data: {
+    test: 'test'
+  }
+})
