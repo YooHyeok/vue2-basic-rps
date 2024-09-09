@@ -28,7 +28,9 @@
 				<h1 class="text-center"><strong>YOU</strong></h1>
 			</div>
 			<div class="small-2 columns text-center">
-				<h1 style="font-size:100px;"><strong>3</strong></h1>
+				<h1 style="font-size:100px;">
+					<strong>{{ count }}</strong>
+				</h1>
 			</div>
 			<div class="small-5 columns text-center">
 				<img src="images/question.jpg" alt="" class="text-center">
@@ -83,7 +85,10 @@
 				<div class="row">
 					<div class="small-12 columns">
 						<div class="text-center">
-							<button class="start-btn">선택 완료!</button>
+							<button 
+								class="start-btn"
+								@click="startGame"
+							>선택 완료!</button>
 						</div>
 						<div class="loading"> 기다리는 중...</div>
 					</div>
