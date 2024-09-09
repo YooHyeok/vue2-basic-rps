@@ -2,7 +2,30 @@ new Vue({
   el: '#app',
   data: {
     myChoice: null,
+    comChoice: null,
     count: 3
+  },
+  /**
+   * 감시자...
+   */
+  watch: { 
+    /* count 변수 감시 */
+    count: function (newVal) {
+      if (newVal === 0) {
+        console.log("카운트가 0이 되었다.")
+        let number = Math.random() // 0과 1 사이의 소수 랜덤
+        if (number < 0.33) {
+          this.comChoice = 'scissor'
+          return
+        }
+        if (number < 0.66) {
+          this.comChoice = 'rock'
+          return
+        }
+        this.comChoice = 'paper'
+        return;
+      }
+    }
   },
   methods: {
     startGame: function () {
