@@ -3,7 +3,7 @@ new Vue({
   data: {
     myChoice: null,
     comChoice: null,
-    count: 3
+    count: 3,
   },
   /**
    * 감시자...
@@ -12,18 +12,44 @@ new Vue({
     /* count 변수 감시 */
     count: function (newVal) {
       if (newVal === 0) {
-        console.log("카운트가 0이 되었다.")
+        // 컴퓨터 이미지 변경
         let number = Math.random() // 0과 1 사이의 소수 랜덤
-        if (number < 0.33) {
-          this.comChoice = 'scissor'
-          return
+        switch (true) {
+          case (number < 0.33):
+            this.comChoice = 'scissor';
+            break;
+          case (number < 0.66):
+            this.comChoice = 'rock';
+            break;
+          default:
+            this.comChoice = 'paper';
         }
-        if (number < 0.66) {
-          this.comChoice = 'rock'
-          return
+        // 가위 바위 보 승패 결정
+        switch (true) {
+          case this.myChoice === this.comChoice:
+            this.winter = 'no one'
+            break;
+            case this.myChoice === 'rock' && this.comChoice === 'scissor':
+            this.winter = 'me'
+            break;
+            case this.myChoice === 'scissor' && this.comChoice === 'paper':
+            this.winter = 'me'
+            break;
+          case this.myChoice === 'paper' && this.comChoice === 'rock' :
+            this.winter = 'me'
+            break;
+          case this.myChoice === 'scissor' && this.comChoice === 'rock' :
+            this.winter = 'com'
+            break;
+          case this.myChoice === 'paper' && this.comChoice === 'scissor':
+            this.winter = 'com'
+            break;
+          case this.myChoice === 'rock' && this.comChoice === 'paper' :
+            this.winter = 'com'
+            break;
+          default:
+            this.winter = 'error'
         }
-        this.comChoice = 'paper'
-        return;
       }
     }
   },
