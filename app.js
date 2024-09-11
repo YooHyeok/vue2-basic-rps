@@ -4,6 +4,8 @@ new Vue({
     myChoice: null,
     comChoice: null,
     count: 3,
+    lifeOfMe: 3,
+    lifeOfCom: 3,
   },
   /**
    * 감시자...
@@ -12,6 +14,7 @@ new Vue({
     /* count 변수 감시 */
     count: function (newVal) {
       if (newVal === 0) {
+
         // 컴퓨터 이미지 변경
         let number = Math.random() // 0과 1 사이의 소수 랜덤
         switch (true) {
@@ -24,6 +27,7 @@ new Vue({
           default:
             this.comChoice = 'paper';
         }
+
         // 가위 바위 보 승패 결정
         switch (true) {
           case this.myChoice === this.comChoice:
@@ -50,6 +54,16 @@ new Vue({
           default:
             this.winter = 'error'
         }
+
+        // 몫 차감
+        switch (this.winter) {
+          case 'me':
+            this.lifeOfCom--;
+            break;
+          case 'com':
+            this.lifeOfMe--;
+        }
+
       }
     }
   },
