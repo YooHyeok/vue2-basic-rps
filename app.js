@@ -6,6 +6,7 @@ new Vue({
     count: 3,
     lifeOfMe: 3,
     lifeOfCom: 3,
+    isSelectable: true, // button show/hidden flag
   },
   /**
    * 감시자...
@@ -64,12 +65,16 @@ new Vue({
             this.lifeOfMe--;
         }
         this.count = 3;
+        // [기다리는중]버튼 show / [선택 완료!]버튼 hide
+        this.isSelectable = true
 
       }
     }
   },
   methods: {
     startGame: function () {
+      // [기다리는중]버튼 hide / [선택 완료!]버튼 show
+      this.isSelectable = false
       if (this.myChoice == null) {
         alert('가위 바위 보 중 하나를 선택해주세요') 
         return;
