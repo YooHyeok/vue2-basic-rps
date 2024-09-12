@@ -63,6 +63,7 @@ new Vue({
           case 'com':
             this.lifeOfMe--;
         }
+        this.count = 3;
 
       }
     }
