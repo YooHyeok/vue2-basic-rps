@@ -51,16 +51,22 @@
 		<div class="row">
 			<div class="small-6 columns text-center">
 				<div class="battle-wrap">
-					<img src="./images/heart.jpg" class="heart" alt="">
-					<img src="./images/heart.jpg" class="heart" alt="">
-					<img src="./images/heart.jpg" class="heart" alt="">
+					<img 
+						v-for="life in lifeOfMe"
+						src="./images/heart.jpg" 
+						class="heart" 
+						alt=""
+					>
 				</div>
 			</div>
 			<div class="small-6 columns text-center">
 				<div class="battle-wrap">
-					<img src="./images/heart.jpg" class="heart" alt="">
-					<img src="./images/heart.jpg" class="heart" alt="">
-					<img src="./images/heart.jpg" class="heart" alt="">
+					<img 
+						v-for="life in lifeOfCom"
+						src="./images/heart.jpg" 
+						class="heart" 
+						alt=""
+					>
 				</div>
 			</div>
 		</div>
