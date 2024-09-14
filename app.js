@@ -7,6 +7,7 @@ new Vue({
     lifeOfMe: 3,
     lifeOfCom: 3,
     isSelectable: true, // button show/hidden flag
+    logs: [],
   },
   /**
    * 감시자...
@@ -65,21 +66,30 @@ new Vue({
             this.lifeOfMe--;
         }
         this.count = 3;
+
         // [기다리는중]버튼 show / [선택 완료!]버튼 hide
         this.isSelectable = true
+
+        // 게임 결과 로그 추가
+        let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
+        this.logs.push(log)
 
       }
     }
   },
   methods: {
     startGame: function () {
+
       // [기다리는중]버튼 hide / [선택 완료!]버튼 show
       this.isSelectable = false
+
+      // 라디오 선택 valid
       if (this.myChoice == null) {
         alert('가위 바위 보 중 하나를 선택해주세요') 
         return;
       }
       
+      // 게임 시작 후 시간 카운팅
       let countDown = setInterval(() => {
         this.count --;
         if (this.count === 0) clearInterval(countDown); // Interval을 멈추라는 의미 (countDown은 interval 식별값)
