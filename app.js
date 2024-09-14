@@ -72,7 +72,8 @@ new Vue({
 
         // 게임 결과 로그 추가
         let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
-        this.logs.push(log)
+        // this.logs.push(log) // 오름차순
+        this.logs.unshift(log) // 내림차순
 
       }
     }
