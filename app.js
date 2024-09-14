@@ -33,32 +33,32 @@ new Vue({
         // 가위 바위 보 승패 결정
         switch (true) {
           case this.myChoice === this.comChoice:
-            this.winter = 'no one'
+            this.winner = 'no one'
             break;
             case this.myChoice === 'rock' && this.comChoice === 'scissor':
-            this.winter = 'me'
+            this.winner = 'me'
             break;
             case this.myChoice === 'scissor' && this.comChoice === 'paper':
-            this.winter = 'me'
+            this.winner = 'me'
             break;
           case this.myChoice === 'paper' && this.comChoice === 'rock' :
-            this.winter = 'me'
+            this.winner = 'me'
             break;
           case this.myChoice === 'scissor' && this.comChoice === 'rock' :
-            this.winter = 'com'
+            this.winner = 'com'
             break;
           case this.myChoice === 'paper' && this.comChoice === 'scissor':
-            this.winter = 'com'
+            this.winner = 'com'
             break;
           case this.myChoice === 'rock' && this.comChoice === 'paper' :
-            this.winter = 'com'
+            this.winner = 'com'
             break;
           default:
-            this.winter = 'error'
+            this.winner = 'error'
         }
 
         // 몫 차감
-        switch (this.winter) {
+        switch (this.winner) {
           case 'me':
             this.lifeOfCom--;
             break;
@@ -70,8 +70,13 @@ new Vue({
         // [기다리는중]버튼 show / [선택 완료!]버튼 hide
         this.isSelectable = true
 
+        
         // 게임 결과 로그 추가
-        let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
+        // let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
+        let log = {
+          message: `You: ${this.myChoice}, Computer: ${this.comChoice}`,
+          winner: this.winner
+        }
         // this.logs.push(log) // 오름차순
         this.logs.unshift(log) // 내림차순
 
