@@ -19,6 +19,12 @@ new Vue({
       return this.comChoice !== null 
       ? `images/${this.comChoice}.jpg`
       : 'images/question.jpg'
+    },
+    leftLifeOfMe: function () {
+      return 3 - this.lifeOfMe
+    },
+    leftLifeOfCom: function () {
+      return 3 - this.lifeOfCom
     }
   },
   /**
