@@ -9,6 +9,20 @@ new Vue({
     isSelectable: true, // button show/hidden flag
     logs: [],
   },
+  computed: {
+    myChoiceImage: function () {
+      if (this.myChoice !== null) {
+        return `images/${this.myChoice}.jpg`
+      }
+      return 'images/question.jpg'
+    },
+    comChoiceImage: function () {
+      if (this.comChoice !== null) {
+        return `images/${this.comChoice}.jpg`
+      }
+      return 'images/question.jpg'
+    }
+  },
   /**
    * 감시자...
    */
