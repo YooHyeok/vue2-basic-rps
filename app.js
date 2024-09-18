@@ -36,30 +36,12 @@ new Vue({
     /* likeOfMe 변수 감시 */
     lifeOfMe: function (newVal) {
       if (newVal === 0) {
-        setTimeout(() => {
-          confirm('안타깝네요. 당신이 패배하였습니다.')
-          this.lifeOfMe = 3
-          this.lifeOfCom = 3
-          this.myChoice = null
-          this.comChoice = null
-          this.winner = null
-          this.logs = []
-          return;
-        }, 500)
+        this.endGame('안타깝네요. 당신이 패배하였습니다.')
       }
     },
     lifeOfCom: function (newVal) {
       if (newVal === 0) {
-        setTimeout(() => {
-          confirm('축하드립니다. 당신이 승리하였습니다.')
-          this.lifeOfMe = 3
-          this.lifeOfCom = 3
-          this.myChoice = null
-          this.comChoice = null
-          this.winner = null
-          this.logs = []
-          return;
-        }, 500)
+        this.endGame('축하드립니다. 당신이 승리하였습니다.')
       }
     },
   },
@@ -137,5 +119,17 @@ new Vue({
       // this.logs.push(log) // 오름차순
       this.logs.unshift(log) // 내림차순
     },
+    endGame: function (msg) {
+      setTimeout(() => {
+        confirm(msg)
+        this.lifeOfMe = 3
+        this.lifeOfCom = 3
+        this.myChoice = null
+        this.comChoice = null
+        this.winner = null
+        this.logs = []
+        return;
+      }, 500)
+    }
   }
 })
