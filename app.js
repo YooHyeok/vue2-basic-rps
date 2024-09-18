@@ -11,16 +11,14 @@ new Vue({
   },
   computed: {
     myChoiceImage: function () {
-      if (this.myChoice !== null) {
-        return `images/${this.myChoice}.jpg`
-      }
-      return 'images/question.jpg'
+      return this.myChoice !== null 
+      ? `images/${this.myChoice}.jpg`
+      : 'images/question.jpg'
     },
     comChoiceImage: function () {
-      if (this.comChoice !== null) {
-        return `images/${this.comChoice}.jpg`
-      }
-      return 'images/question.jpg'
+      return this.comChoice !== null 
+      ? `images/${this.comChoice}.jpg`
+      : 'images/question.jpg'
     }
   },
   /**
