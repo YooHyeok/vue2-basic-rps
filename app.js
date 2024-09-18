@@ -18,68 +18,19 @@ new Vue({
       if (newVal === 0) {
 
         // 컴퓨터 이미지 변경
-        let number = Math.random() // 0과 1 사이의 소수 랜덤
-        switch (true) {
-          case (number < 0.33):
-            this.comChoice = 'scissor';
-            break;
-          case (number < 0.66):
-            this.comChoice = 'rock';
-            break;
-          default:
-            this.comChoice = 'paper';
-        }
+        this.selectCom();
 
-        // 가위 바위 보 승패 결정
-        switch (true) {
-          case this.myChoice === this.comChoice:
-            this.winner = 'no one'
-            break;
-            case this.myChoice === 'rock' && this.comChoice === 'scissor':
-            this.winner = 'me'
-            break;
-            case this.myChoice === 'scissor' && this.comChoice === 'paper':
-            this.winner = 'me'
-            break;
-          case this.myChoice === 'paper' && this.comChoice === 'rock' :
-            this.winner = 'me'
-            break;
-          case this.myChoice === 'scissor' && this.comChoice === 'rock' :
-            this.winner = 'com'
-            break;
-          case this.myChoice === 'paper' && this.comChoice === 'scissor':
-            this.winner = 'com'
-            break;
-          case this.myChoice === 'rock' && this.comChoice === 'paper' :
-            this.winner = 'com'
-            break;
-          default:
-            this.winner = 'error'
-        }
-
-        // 몫 차감
-        switch (this.winner) {
-          case 'me':
-            this.lifeOfCom--;
-            break;
-          case 'com':
-            this.lifeOfMe--;
-        }
+        // 가위 바위 보 승패 결정 & 몫 차감
+        this.whoIsWin();
+        
         this.count = 3;
-
+        
         // [기다리는중]버튼 show / [선택 완료!]버튼 hide
         this.isSelectable = true
-
         
         // 게임 결과 로그 추가
-        // let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
-        let log = {
-          message: `You: ${this.myChoice}, Computer: ${this.comChoice}`,
-          winner: this.winner
-        }
-        // this.logs.push(log) // 오름차순
-        this.logs.unshift(log) // 내림차순
-
+        this.updateLogs();
+        
       }
     },
     /* likeOfMe 변수 감시 */
@@ -129,6 +80,62 @@ new Vue({
         this.count --;
         if (this.count === 0) clearInterval(countDown); // Interval을 멈추라는 의미 (countDown은 interval 식별값)
       }, 1000)
-    }
+    },
+    selectCom: function () {
+      let number = Math.random() // 0과 1 사이의 소수 랜덤
+        switch (true) {
+          case (number < 0.33):
+            this.comChoice = 'scissor';
+            break;
+          case (number < 0.66):
+            this.comChoice = 'rock';
+            break;
+          default:
+            this.comChoice = 'paper';
+        }
+    },
+    whoIsWin: function () {
+      switch (true) {
+        case this.myChoice === this.comChoice:
+          this.winner = 'no one'
+          break;
+          case this.myChoice === 'rock' && this.comChoice === 'scissor':
+          this.winner = 'me'
+          break;
+          case this.myChoice === 'scissor' && this.comChoice === 'paper':
+          this.winner = 'me'
+          break;
+        case this.myChoice === 'paper' && this.comChoice === 'rock' :
+          this.winner = 'me'
+          break;
+        case this.myChoice === 'scissor' && this.comChoice === 'rock' :
+          this.winner = 'com'
+          break;
+        case this.myChoice === 'paper' && this.comChoice === 'scissor':
+          this.winner = 'com'
+          break;
+        case this.myChoice === 'rock' && this.comChoice === 'paper' :
+          this.winner = 'com'
+          break;
+        default:
+          this.winner = 'error'
+      }
+      switch (this.winner) {
+        case 'me':
+          this.lifeOfCom--;
+          break;
+        case 'com':
+          this.lifeOfMe--;
+      }
+    },
+    updateLogs: function () {
+      // let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
+      let log = {
+        message: `You: ${this.myChoice}, Computer: ${this.comChoice}`,
+        winner: this.winner
+      }
+      // this.logs.push(log) // 오름차순
+      this.logs.unshift(log) // 내림차순
+    },
   }
 })
