@@ -8,6 +8,11 @@ new Vue({
     lifeOfCom: 3,
     isSelectable: true, // button show/hidden flag
     logs: [],
+    selects: [
+      { name: '가위', value: 'scissor' },
+      { name: '바위', value: 'rock' },
+      { name: '보', value: 'paper' },
+    ],
   },
   computed: {
     myChoiceImage: function () {
