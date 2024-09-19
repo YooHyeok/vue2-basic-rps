@@ -77,6 +77,7 @@ new Vue({
       // 라디오 선택 valid
       if (this.myChoice == null) {
         alert('가위 바위 보 중 하나를 선택해주세요') 
+        this.isSelectable = true
         return;
       }
       
