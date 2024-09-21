@@ -2,40 +2,32 @@ Vue.component('Root', {
   template: html`
   <div>
     <div class="row">
-			<div class="small-5 columns text-center">
-				<img 
-					:src="myChoiceImage" 
-					alt="" 
-					class="text-center"
-				>
-				<h1 class="text-center"><strong>YOU</strong></h1>
-			</div>
+			<SelectImg 
+        :name="'You'"
+        :choiceImage="myChoiceImage"
+      />
 			<div class="small-2 columns text-center">
 				<h1 style="font-size:100px;">
 					<strong>{{ count }}</strong>
 				</h1>
 			</div>
-			<div class="small-5 columns text-center">
-				<img 
-					:src="comChoiceImage" 
-					alt="" 
-					class="text-center"
-				>
-				<h1 class="text-center"><strong>Computer</strong></h1>
-			</div>
+      <SelectImg 
+        :name="'Computer'"
+        :choiceImage="comChoiceImage"
+      />
 		</div>
 		<div class="row">
 			<div class="small-6 columns text-center">
 				<div class="battle-wrap">
 					<img 
 						v-for="life in lifeOfMe"
-						src="./images/heart.jpg" 
+						src="./public/images/heart.jpg" 
 						class="heart" 
 						alt=""
 					>
 					<img 
 						v-for="life in leftLifeOfMe"
-						src="./images/broken-heart.jpg" 
+						src="./public/images/broken-heart.jpg" 
 						class="heart" 
 						alt=""
 					>
@@ -45,13 +37,13 @@ Vue.component('Root', {
 				<div class="battle-wrap">
 					<img 
 						v-for="life in lifeOfCom"
-						src="./images/heart.jpg" 
+						src="./public/images/heart.jpg" 
 						class="heart" 
 						alt=""
 					>
 					<img 
 						v-for="life in leftLifeOfCom"
-						src="./images/broken-heart.jpg" 
+						src="./public/images/broken-heart.jpg" 
 						class="heart" 
 						alt=""
 					>
@@ -126,9 +118,9 @@ Vue.component('Root', {
 			</div>
 		</div>
   </div>
-  `
-  , name: "Root"
-  , data: () => {
+  `,
+  name: "Root",
+  data: () => {
     return {
       myChoice: null,
       comChoice: null,
@@ -147,13 +139,13 @@ Vue.component('Root', {
   computed: {
     myChoiceImage: function () {
       return this.myChoice !== null 
-      ? `images/${this.myChoice}.jpg`
-      : 'images/question.jpg'
+      ? `public/images/${this.myChoice}.jpg`
+      : 'public/images/question.jpg'
     },
     comChoiceImage: function () {
       return this.comChoice !== null 
-      ? `images/${this.comChoice}.jpg`
-      : 'images/question.jpg'
+      ? `public/images/${this.comChoice}.jpg`
+      : 'public/images/question.jpg'
     },
     leftLifeOfMe: function () {
       return 3 - this.lifeOfMe
