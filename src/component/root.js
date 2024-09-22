@@ -15,38 +15,14 @@ Vue.component('Root', {
       />
 		</div>
 		<div class="row">
-			<div class="small-6 columns text-center">
-				<div class="battle-wrap">
-					<img 
-						v-for="life in lifeOfMe"
-						src="./public/images/heart.jpg" 
-						class="heart" 
-						alt=""
-					>
-					<img 
-						v-for="life in leftLifeOfMe"
-						src="./public/images/broken-heart.jpg" 
-						class="heart" 
-						alt=""
-					>
-				</div>
-			</div>
-			<div class="small-6 columns text-center">
-				<div class="battle-wrap">
-					<img 
-						v-for="life in lifeOfCom"
-						src="./public/images/heart.jpg" 
-						class="heart" 
-						alt=""
-					>
-					<img 
-						v-for="life in leftLifeOfCom"
-						src="./public/images/broken-heart.jpg" 
-						class="heart" 
-						alt=""
-					>
-				</div>
-			</div>
+			<Life
+        :lifeOf="lifeOfMe"
+        :leftLifeOf="leftLifeOfMe"
+      />
+      <Life
+        :lifeOf="lifeOfCom"
+        :leftLifeOf="leftLifeOfCom"
+      />
 		</div>
 
 		<div class="row">
