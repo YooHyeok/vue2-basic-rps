@@ -6,11 +6,9 @@ Vue.component('Root', {
         :name="'You'"
         :choiceImage="myChoiceImage"
       />
-			<div class="small-2 columns text-center">
-				<h1 style="font-size:100px;">
-					<strong>{{ count }}</strong>
-				</h1>
-			</div>
+			<Count
+        :count="count"
+      />
       <SelectImg 
         :name="'Computer'"
         :choiceImage="comChoiceImage"
