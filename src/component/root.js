@@ -30,24 +30,10 @@ Vue.component('Root', {
           :selects="selects"
           :choice="choice"
         />
-				<div class="row">
-					<div class="small-12 columns">
-						<div class="text-center" v-if="isSelectable">
-							<button 
-								class="start-btn"
-								@click="startGame"
-							>
-								선택 완료!
-							</button>
-						</div>
-						<div 
-							v-else
-							class="loading"
-						> 
-							기다리는 중...
-						</div>
-					</div>
-				</div>
+				<Button 
+          :isSelectable="isSelectable"
+          :startGame="startGame"
+        />
 			</div>
 			<div class="small-6 columns text-center">
 				<p>생각 중...</p>
