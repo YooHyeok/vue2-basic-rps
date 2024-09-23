@@ -24,34 +24,12 @@ Vue.component('Root', {
         :leftLifeOf="leftLifeOfCom"
       />
 		</div>
-
 		<div class="row">
 			<div class="small-6 columns text-center">
-				<div class="row">
-					<div class="small-8 small-offset-2 columns text-center">
-						<label class="radio-label">
-							<input 
-								type="radio" 
-								v-model="myChoice" 
-								value="scissor"
-							> 가위
-						</label>
-						<label class="radio-label">
-							<input 
-								type="radio" 
-								v-model="myChoice" 
-								value="rock"
-							> 바위
-						</label>
-						<label class="radio-label">
-							<input 
-								type="radio" 
-								v-model="myChoice" 
-								value="paper"
-							> 보
-						</label>
-					</div>
-				</div>
+				<Radio
+          :selects="selects"
+          :choice="choice"
+        />
 				<div class="row">
 					<div class="small-12 columns">
 						<div class="text-center" v-if="isSelectable">
@@ -96,8 +74,10 @@ Vue.component('Root', {
   name: "Root",
   data: () => {
     return {
-      myChoice: null,
-      comChoice: null,
+      choice: {
+        user: null,
+        computer: null,
+      },
       count: 3,
       lifeOfMe: 3,
       lifeOfCom: 3,
@@ -112,13 +92,13 @@ Vue.component('Root', {
   },
   computed: {
     myChoiceImage: function () {
-      return this.myChoice !== null 
-      ? `public/images/${this.myChoice}.jpg`
+      return this.choice.user !== null 
+      ? `public/images/${this.choice.user}.jpg`
       : 'public/images/question.jpg'
     },
     comChoiceImage: function () {
-      return this.comChoice !== null 
-      ? `public/images/${this.comChoice}.jpg`
+      return this.choice.computer !== null 
+      ? `public/images/${this.choice.computer}.jpg`
       : 'public/images/question.jpg'
     },
     leftLifeOfMe: function () {
@@ -166,15 +146,15 @@ Vue.component('Root', {
   },
   methods: {
     startGame: function () {
+  
+        // [기다리는중]버튼 show / [선택 완료!]버튼 hide
+        this.isSelectable = false
 
       // 라디오 선택 valid
-      if (this.myChoice == null) {
+      if (this.choice.user == null) {
         alert('가위 바위 보 중 하나를 선택해주세요') 
         return;
       }
-
-      // [기다리는중]버튼 show / [선택 완료!]버튼 hide
-      this.isSelectable = false
       
       // 게임 시작 후 시간 카운팅
       let countDown = setInterval(() => {
@@ -186,36 +166,36 @@ Vue.component('Root', {
       let number = Math.random() // 0과 1 사이의 소수 랜덤
         switch (true) {
           case (number < 0.33):
-            this.comChoice = 'scissor';
+            this.choice.computer = 'scissor';
             break;
           case (number < 0.66):
-            this.comChoice = 'rock';
+            this.choice.computer = 'rock';
             break;
           default:
-            this.comChoice = 'paper';
+            this.choice.computer = 'paper';
         }
     },
     whoIsWin: function () {
       switch (true) {
-        case this.myChoice === this.comChoice:
+        case this.choice.user === this.choice.computer:
           this.winner = 'no one'
           break;
-          case this.myChoice === 'rock' && this.comChoice === 'scissor':
+          case this.choice.user === 'rock' && this.choice.computer === 'scissor':
           this.winner = 'me'
           break;
-          case this.myChoice === 'scissor' && this.comChoice === 'paper':
+          case this.choice.user === 'scissor' && this.choice.computer === 'paper':
           this.winner = 'me'
           break;
-        case this.myChoice === 'paper' && this.comChoice === 'rock' :
+        case this.choice.user === 'paper' && this.choice.computer === 'rock' :
           this.winner = 'me'
           break;
-        case this.myChoice === 'scissor' && this.comChoice === 'rock' :
+        case this.choice.user === 'scissor' && this.choice.computer === 'rock' :
           this.winner = 'com'
           break;
-        case this.myChoice === 'paper' && this.comChoice === 'scissor':
+        case this.choice.user === 'paper' && this.choice.computer === 'scissor':
           this.winner = 'com'
           break;
-        case this.myChoice === 'rock' && this.comChoice === 'paper' :
+        case this.choice.user === 'rock' && this.choice.computer === 'paper' :
           this.winner = 'com'
           break;
         default:
@@ -230,9 +210,9 @@ Vue.component('Root', {
       }
     },
     updateLogs: function () {
-      // let log = `You: ${this.myChoice}, Computer: ${this.comChoice}`
+      // let log = `You: ${this.choice.user}, Computer: ${this.choice.computer}`
       let log = {
-        message: `You: ${this.myChoice}, Computer: ${this.comChoice}`,
+        message: `You: ${this.choice.user}, Computer: ${this.choice.computer}`,
         winner: this.winner
       }
       // this.logs.push(log) // 오름차순
@@ -243,8 +223,8 @@ Vue.component('Root', {
         confirm(msg)
         this.lifeOfMe = 3
         this.lifeOfCom = 3
-        this.myChoice = null
-        this.comChoice = null
+        this.choice.user = null
+        this.choice.computer = null
         this.winner = null
         this.logs = []
         return;
