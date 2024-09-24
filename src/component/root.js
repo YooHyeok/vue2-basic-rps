@@ -39,22 +39,9 @@ Vue.component('Root', {
 				<p>생각 중...</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="small-12 columns log">
-				<ul>
-					<li 
-						:class="{
-							'win-log': log.winner === 'me', 
-							'defeat-log': log.winner === 'com', 
-							'draw-log': log.winner === 'no one'
-						}"
-						v-for="log in logs"
-					>
-						{{ log.message }}
-					</li>
-				</ul>
-			</div>
-		</div>
+		<Result 
+      :logs="logs"
+    />
   </div>
   `,
   name: "Root",
