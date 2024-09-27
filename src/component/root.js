@@ -1,21 +1,20 @@
-Vue.component('Root', {
-  template: html`
+const template= html`
   <div>
     <div class="row">
-			<SelectImg 
+      <SelectImg 
         :name="'You'"
         :choiceImage="myChoiceImage"
       />
-			<Count
+      <Count
         :count="count"
       />
       <SelectImg 
         :name="'Computer'"
         :choiceImage="comChoiceImage"
       />
-		</div>
-		<div class="row">
-			<Life
+    </div>
+    <div class="row">
+      <Life
         :lifeOf="lifeOfMe"
         :leftLifeOf="leftLifeOfMe"
       />
@@ -23,28 +22,46 @@ Vue.component('Root', {
         :lifeOf="lifeOfCom"
         :leftLifeOf="leftLifeOfCom"
       />
-		</div>
-		<div class="row">
-			<div class="small-6 columns text-center">
-				<Radio
+    </div>
+    <div class="row">
+      <div class="small-6 columns text-center">
+        <Radio
           :selects="selects"
           :choice="choice"
-        />
-				<Button 
+        />        
+        <Button 
           :isSelectable="isSelectable"
           :startGame="startGame"
         />
-			</div>
-			<div class="small-6 columns text-center">
-				<p>생각 중...</p>
-			</div>
-		</div>
-		<Result 
+      </div>
+      <div class="small-6 columns text-center">
+        <p>생각 중...</p>
+      </div>
+    </div>
+    <Result 
       :logs="logs"
     />
-  </div>
-  `,
+  </div>`
+
+import SelectImg from "./select-img.js"
+import Count from "./count.js"
+import Life from "./life.js"
+import Radio from "./radio.js"
+import Button from "./button.js"
+import Result from "./result.js"
+
+export default Vue.component('Root', {
+  template,
   name: "Root",
+  components: {
+    SelectImg,
+    Count,
+    Life,
+    Button,
+    Radio,
+    Result
+
+  },
   data: () => {
     return {
       choice: {
