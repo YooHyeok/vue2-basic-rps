@@ -1,4 +1,4 @@
-Vue.component('SelectImg', {
+export default Vue.component('SelectImg', {
   template: html`
     <div class="small-5 columns text-center">
       <img 

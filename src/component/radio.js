@@ -1,4 +1,4 @@
-Vue.component('Radio', {
+export default Vue.component('Radio', {
   template: html`
     <div class="row">
       <div class="small-8 small-offset-2 columns text-center">

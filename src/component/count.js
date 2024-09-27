@@ -1,4 +1,4 @@
-Vue.component('Count', {
+export default Vue.component('Count', {
   template: html`
     <div class="small-2 columns text-center">
       <h1 style="font-size:100px;">

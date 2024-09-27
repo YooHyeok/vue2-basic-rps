@@ -1,4 +1,4 @@
-Vue.component('Life', {
+export default Vue.component('Life', {
   template: html`
     <div class="small-6 columns text-center">
       <div class="battle-wrap">

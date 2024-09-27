@@ -1,4 +1,4 @@
-Vue.component('Button', {
+export default Vue.component('Button', {
   template: html`
     <div class="row">
       <div class="small-12 columns">

@@ -1,4 +1,4 @@
-Vue.component('Result', {
+export default Vue.component('Result', {
   template: html`
     <div class="row">
 			<div class="small-12 columns log">
