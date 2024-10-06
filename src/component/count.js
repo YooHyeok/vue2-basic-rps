@@ -1,4 +1,4 @@
-export default Vue.component('Count', {
+export default {
   template: html`
     <div class="small-2 columns text-center">
       <h1 style="font-size:100px;">
@@ -10,4 +10,4 @@ export default Vue.component('Count', {
 	props: {
     count: null,
 	}
-});
+}

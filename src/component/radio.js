@@ -1,4 +1,4 @@
-export default Vue.component('Radio', {
+export default {
   template: html`
     <div class="row">
       <div class="small-8 small-offset-2 columns text-center">
@@ -20,4 +20,4 @@ export default Vue.component('Radio', {
 		selects: null,
 		choice: null,
 	}
-});
+}

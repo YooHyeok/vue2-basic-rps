@@ -1,4 +1,4 @@
-export default Vue.component('Life', {
+export default {
   template: html`
     <div class="small-6 columns text-center">
       <div class="battle-wrap">
@@ -22,4 +22,4 @@ export default Vue.component('Life', {
 		lifeOf: null,
 		leftLifeOf: null,
 	}
-});
+}

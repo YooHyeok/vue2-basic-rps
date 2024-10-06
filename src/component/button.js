@@ -1,4 +1,4 @@
-export default Vue.component('Button', {
+export default {
   template: html`
     <div class="row">
       <div class="small-12 columns">
@@ -27,4 +27,4 @@ export default Vue.component('Button', {
 		isSelectable: null,
     startGame: Function
 	}
-});
+}

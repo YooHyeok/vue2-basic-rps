@@ -1,4 +1,4 @@
-export default Vue.component('SelectImg', {
+export default {
   template: html`
     <div class="small-5 columns text-center">
       <img 
@@ -13,4 +13,4 @@ export default Vue.component('SelectImg', {
     choiceImage: null,
     name: null
   }
-});
+}

@@ -1,4 +1,4 @@
-export default Vue.component('Result', {
+export default {
   template: html`
     <div class="row">
 			<div class="small-12 columns log">
@@ -22,4 +22,4 @@ export default Vue.component('Result', {
 	props: {
 		logs: null
 	}
-});
+}

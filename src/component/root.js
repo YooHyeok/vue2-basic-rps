@@ -50,7 +50,7 @@ import Radio from "./radio.js"
 import Button from "./button.js"
 import Result from "./result.js"
 
-export default Vue.component('Root', {
+export default {
   template,
   name: "Root",
   components: {
@@ -222,4 +222,4 @@ export default Vue.component('Root', {
       }, 500)
     }
   }
-});
+}
