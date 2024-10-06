@@ -137,14 +137,15 @@ export default Vue.component('Root', {
   methods: {
     startGame: function () {
   
-        // [기다리는중]버튼 show / [선택 완료!]버튼 hide
-        this.isSelectable = false
-
+      
       // 라디오 선택 valid
       if (this.choice.user == null) {
         alert('가위 바위 보 중 하나를 선택해주세요') 
         return;
       }
+      
+      // [기다리는중]버튼 show / [선택 완료!]버튼 hide
+      this.isSelectable = false
       
       // 게임 시작 후 시간 카운팅
       let countDown = setInterval(() => {
