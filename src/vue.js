@@ -1,7 +1,4 @@
 import Root from "./component/root.js"
 new Vue({
-  el: '#app',
-  components: {
-    Root
-  }
-})
+  render: (h) => {return h(Root)}
+}).$mount('#app')
